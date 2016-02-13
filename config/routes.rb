@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
 
+#  get 'projects/list'
+#  get 'projects/create'
+#  get 'projects/get'
+#  get 'projects/delete'
+  
   root 'static#index'
   namespace :api do
     get 'ping' => 'sandbox#ping'
@@ -10,6 +15,10 @@ Rails.application.routes.draw do
   # Returns static files
   get "/:page" => "static#show"
 
+  get "/api/projects" => 'projects#list'
+  get "/api/projects/:id" => 'projects#get'
+  post "/api/projects" => 'projects#create'
+  delete "/api/projects/:id" => 'projects#delete'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
